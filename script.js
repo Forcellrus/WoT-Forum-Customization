@@ -66,7 +66,8 @@ function buttonAdd (label, hoverText, url) {
   document.querySelector('#community_app_menu').appendChild(li);
 }
 
-if (config[1]) {
+if (config[1]
+   && document.querySelector('#common_menu') !== null) {
   document.querySelector('#common_menu').remove();
 }
  
@@ -133,6 +134,6 @@ if (config[7]) {
 }
 
 if (config[8]
-   && document.querySelector('.rep_highlight')) {
+   && document.querySelector('.rep_highlight') !== null) {
   document.querySelector('.rep_highlight').remove();
 }
