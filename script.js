@@ -15,7 +15,7 @@ const config = [
     // Custom navigation bar buttons (you can add your own buttons below config section or customize the preset ones)
     true
     ,
-    // Hide Wargaming menu top bar
+    // Hide Wargaming menu (topmost bar)
     true
     ,
     // Hide top banner & add homepage button to navigation bar instead
@@ -43,7 +43,7 @@ const config = [
 
 
 // HEADER BUTTONS
-// To add a new button please use the following syntax: headerButtonAdd(Button label, Button hover text, URL);
+// To add a new button please use the following syntax: headerButtonAdd('Button label', 'Button hover text', 'URL');
 // Don't forget to encapsulate every argument with single quotes and separate them with a comma, like below.
 // Buttons will appear in the order they are added, from top to bottom.
 
@@ -89,8 +89,13 @@ if (config[3]) {
 
 if (config[4]
     && document.querySelector('.b-announcements') !== null) {
-  document.querySelector('.b-announcements').nextSibling.nextSibling.remove();
-  document.querySelector('.b-announcements').remove();
+  // document.querySelector('.b-announcements').nextSibling.nextSibling.remove();
+  const elements = ['#content > br:nth-child(4)',
+                    '#content > br:nth-child(9)',
+                    '.b-announcements'];
+  elements.forEach(element => {
+    document.querySelector(element).remove();  
+  });
 }
 
 if (config[5]) {
