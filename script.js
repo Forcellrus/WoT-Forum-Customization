@@ -36,14 +36,14 @@ const config = [
     // Change moderated post dot/indicator to a 100px scale
     false
     ,
-    // Hide "Popular" topic badge/star
+    // Hide "Popular" post badge/star
     true
     ,
   ]
 
 
 // HEADER BUTTONS
-// To add a new button please use the following syntax: headerButtonAdd('Button label', 'Button hover text', 'URL');
+// To add a new button please use the following syntax: buttonAdd('Button label', 'Button hover text', 'URL');
 // Don't forget to encapsulate every argument with single quotes and separate them with a comma, like below.
 // Buttons will appear in the order they are added, from top to bottom.
 
