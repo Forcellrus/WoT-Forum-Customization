@@ -90,7 +90,6 @@ if (config[3]) {
 
 if (config[4]
     && document.querySelector('.b-announcements') !== null) {
-  // document.querySelector('.b-announcements').nextSibling.nextSibling.remove();
   const elements = ['#content > br:nth-child(4)',
                     '#content > br:nth-child(9)',
                     '.b-announcements'];
