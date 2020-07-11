@@ -94,7 +94,9 @@ if (footerRemove) {
                     '#footer_utilities > div.b-footer-copyr',
                     '#footer_utilities > div.clearfix'];
   elements.forEach(element => {
-    document.querySelector(element).remove();
+    if ((x = document.querySelector(element)) !== null) {
+      x.remove();
+    }
   });
 }
 
