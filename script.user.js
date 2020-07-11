@@ -101,10 +101,13 @@ if (footerRemove) {
 if (informationRemove
     && document.querySelector('.b-announcements') !== null) {
   const elements = ['#content > br:nth-child(4)',
+                    '#content > br:nth-child(11)',
                     '#content > br:nth-child(9)',
                     '.b-announcements'];
   elements.forEach(element => {
-    document.querySelector(element).remove();  
+    if ((x = document.querySelector(element)) !== null) {
+      x.remove();
+    }
   });
 }
 
