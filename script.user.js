@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        WoT EU Forum Customization
 // @author      Forcellrus
-// @version     1.0
+// @version     1.1
 // @match       http://forum.worldoftanks.eu/*
 // @grant       GM_addStyle
 // ==/UserScript==
@@ -19,6 +19,9 @@ const config = [
     true
     ,
     // Hide top banner & add homepage button to navigation bar instead
+    true
+    ,
+    // Hide promo banner below navigation bar
     true
     ,
     // Hide page footer (preserves the "Back to top" button)
@@ -41,7 +44,6 @@ const config = [
     ,
   ]
 
-
 // HEADER BUTTONS
 // To add a new button please use the following syntax: buttonAdd('Button label', 'Button hover text', 'URL');
 // Don't forget to encapsulate every argument with single quotes and separate them with a comma, like below.
@@ -56,7 +58,10 @@ buttonAdd('Forum Rules', 'Go to Forum Rules', 'http://forum.worldoftanks.eu/inde
 
 
 
+
 // Only change the code below if you know what you're doing.
+
+const [ , WGMenuRemove, topBannerRemove, promoRemove, footerRemove, informationRemove, queuedRemove, hotRemove, moderatedScale, popularRemove ] = config;
 
 function buttonAdd (label, hoverText, url) {
   if (!config[0]) return;
@@ -66,12 +71,12 @@ function buttonAdd (label, hoverText, url) {
   document.querySelector('#community_app_menu').appendChild(li);
 }
 
-if (config[1]
-   && document.querySelector('#common_menu') !== null) {
-  document.querySelector('#common_menu').remove();
+if (WGMenuRemove
+   && (x = document.querySelector('#common_menu')) !== null) {
+  x.remove();
 }
  
-if (config[2]) {
+if (topBannerRemove) {
   const li = document.createElement('li');
   li.setAttribute('class', 'left');
   li.innerHTML = '<a href="http://forum.worldoftanks.eu/" title="Go to community index">Home</a>';
@@ -79,7 +84,12 @@ if (config[2]) {
   document.querySelector('#branding').remove();
 }
 
-if (config[3]) {
+if (promoRemove
+   && (x = document.querySelector('.js-wgcds-content-item')) !== null) {
+  x.remove();
+}
+
+if (footerRemove) {
   const elements = ['#footer_utilities > ul',
                     '#footer_utilities > div.b-footer-copyr',
                     '#footer_utilities > div.clearfix'];
@@ -88,7 +98,7 @@ if (config[3]) {
   });
 }
 
-if (config[4]
+if (informationRemove
     && document.querySelector('.b-announcements') !== null) {
   const elements = ['#content > br:nth-child(4)',
                     '#content > br:nth-child(9)',
@@ -98,19 +108,19 @@ if (config[4]
   });
 }
 
-if (config[5]) {
+if (queuedRemove) {
   document.querySelectorAll('.ipsBadge_orange').forEach(element => {
     if (element.innerText == "QUEUED") element.remove();
     });
 }
 
-if (config[6]) {
+if (hotRemove) {
   document.querySelectorAll('.ipsBadge_orange').forEach(element => {
     if (element.innerText == "HOT") element.remove();
     });
 }
 
-if (config[7]) {
+if (moderatedScale) {
   GM_addStyle (`
       .mlabel {
         background-size: 100px !important;
@@ -132,7 +142,7 @@ if (config[7]) {
   `);
 }
 
-if (config[8]
-   && document.querySelector('.rep_highlight') !== null) {
-  document.querySelector('.rep_highlight').remove();
+if (popularRemove
+   && (x = document.querySelector('.rep_highlight')) !== null) {
+  x.remove();
 }
